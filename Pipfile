@@ -8,6 +8,7 @@ ccxt = "*"
 pandas = "*"
 finta = "*"
 matplotlib = "*"
+numpy = "*"
 
 [dev-packages]
 

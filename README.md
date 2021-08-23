@@ -15,4 +15,6 @@ Variables:
 Steps:
 1) get close data
 2) see lin reg chanel
-3) 
+3) optimise for variables in backtest
+4) test on test data
+5) put into a production environment. 
