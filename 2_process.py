@@ -2,6 +2,8 @@ import pandas as pd
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+from pathlib import Path
 
 exchange = 'Binance'
 pair = 'btc_usdt'
@@ -13,7 +15,7 @@ entry_thrsh = 1.05
 exit_thrsh = 1.10
 stoploss_thrsh = 1.05
 
-
+###WHOLE OF DF FUNCTIONS GO HERE. 
 #takes the csv, sets index with datetimeformat, returns a pandas dataframe
 def read_csv(ex, p, tf):
     d_f = pd.read_csv(f'data/1_fresh/{ex}/{p}_{tf}.csv', names=oclhvColumns)
@@ -27,27 +29,20 @@ def simplify_df (d_f):
     new_df = d_f[['Close']].copy()
     return new_df
 
-#Takes a lookback distance and pandas dataframe, does least squares polynomial fit. returns poly coefficients and Residuals is sum of squared 
-def poly_vars (lb_p,d_f):
-    
-    return {x:1234, xx:2421352 ,ssr:3452435}
-
-
-# takes array of lookback periods 
-def poly_vars_to_df ():
-    print('90')
-
 
 #puts the data in the jar
 def pickle_df(ex, p, tf, d_f):
-    d_f.to_pickle(f'data/processed/{ex}/{p}_{tf}.pkl')
-    print(f'data/processed/{ex}/{p}_{tf}.pkl')
-
+    path = Path("./data/2_processed/", str(ex))
+    path.mkdir(parents=True, exist_ok=True)
+    full_path = path / str(f'{p}_{tf}.pkl')
+    d_f.to_pickle(full_path)
+    print(full_path)
 
 if __name__ == '__main__':
     df = read_csv(exchange, pair, timeframe)
     df = simplify_df (df)
     pickle_df(exchange, pair, timeframe, df)
+    
 
     df.info()
     print(df.head(10))

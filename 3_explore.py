@@ -4,4 +4,4 @@ import matplotlib.pyplot as plt
 df = pd.read_pickle('data/processed/Binance/btc_usdt_15m.pkl')
 df.info()
 
-print(df['Volume'].plot())
+print(df['Close'].plot())
