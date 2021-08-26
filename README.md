@@ -10,7 +10,7 @@ Variables:
 - absolute variance from the linear regression
 - entry threshold
 - exit threshold
-- 
+- stop_loss_thsh
 
 Steps:
 1) get close data
@@ -18,3 +18,8 @@ Steps:
 3) optimise for variables in backtest
 4) test on test data
 5) put into a production environment. 
+
+Data splits:
+Train 2018-01-01 to 2020-12-31
+Valiation BACKTEST
+Test 2021-01-01 to 2021-07-31
