@@ -14,6 +14,8 @@ lookback_period = [5,10,20,50,100,200,500,1000,2000]
 entry_thrsh = 1.05
 exit_thrsh = 1.10
 stoploss_thrsh = 1.05
+train_start = "2018-01-01 00:00:00"
+train_finish = "2020-0-01 00:00:00"
 
 ###WHOLE OF DF FUNCTIONS GO HERE. 
 #takes the csv, sets index with datetimeformat, returns a pandas dataframe
@@ -37,6 +39,9 @@ def pickle_df(ex, p, tf, d_f):
     full_path = path / str(f'{p}_{tf}.pkl')
     d_f.to_pickle(full_path)
     print(full_path)
+
+def train_set(d_f):
+    df_x = d_f[train_start:train_finish] 
 
 if __name__ == '__main__':
     df = read_csv(exchange, pair, timeframe)
