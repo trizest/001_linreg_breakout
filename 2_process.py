@@ -14,6 +14,7 @@ train_finish = "2020-12-31 23:45:00"
 test_start = "2021-01-01 00:00:00"
 test_finish = "2021-06-30 00:00:00"
 
+
 ###WHOLE OF DF FUNCTIONS GO HERE. 
 #takes the csv, sets index with datetimeformat, returns a pandas dataframe
 def read_csv(ex, p, tf):
@@ -42,7 +43,7 @@ def train_set(d_f):
     df_x = d_f[train_start:train_finish] 
     return df_x
 
-#function run. saves two processed df's in pickles. 
+#run. saves two processed df's in pickles. 
 if __name__ == '__main__':
     df = read_csv(exchange, pair, timeframe)
     df = simplify_df (df)
@@ -52,6 +53,6 @@ if __name__ == '__main__':
     pickle_df(exchange, pair, timeframe, test_df, "test")
 
     train_df.info()
-    print(test_df.head(10))
+    print(train_df.head(10))
     print(test_df.tail(10))
 
